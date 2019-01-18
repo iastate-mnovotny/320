@@ -1,0 +1,19 @@
+<script>
+	let temperature = prompt("what is the current temperature in F?");
+	temperature = parseInt(temperature);
+	if (temperature <= 32) {
+		alert("It is very cold out today!");
+	} else if (temperature >= 80) {
+		alert("It is very hot out today!");
+	} else if (temperature >= 32 && temperature <= 50) {
+		alert("It is chilly out today!");
+	} else {
+		alert("It is nice out today!");
+	};
+	alert("Give a number to try to escape the loop!");
+	a = 1;
+	while(a%2 == 1) {
+		a = parseInt(prompt("Give me a number"));
+	}; 
+	alert("You've escaped!");
+</script>
