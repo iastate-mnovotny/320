@@ -8,29 +8,29 @@ Number Guessing Game
 		<p> This page will guess a number between 1 and 100. </p>
 	</body>
 	<script> 
-		alert ("think of a number between 1 and 100 for me to guess.")
-			upper = 100
-			lower = 1
+		//alert ("think of a number between 1 and 100 for me to guess.")
+			upper = 100;
+			lower = 1;
 			guess = Math.round((upper + lower) / 2);
-			var1 = prompt ("is the number " + guess)
+			var1 = prompt ("is the number " + guess);
 			while (var1 !== "yes")
 			{
 				if (var1 == "<")
 				{
-					upper = (guess - 1)
-					guess = Math.round((upper + lower) / 2) ; 
-					var1 = prompt ("is the number " + guess)
+					upper = (guess - 1);
+					guess = Math.round((upper + lower) / 2); 
+					var1 = prompt ("is the number " + guess);
 				}
 				else if (var1 == ">")
 				{
-					lower = (guess + 1)
-					guess = Math.round((upper + lower) / 2) ; 
-					var1 = prompt ("is the number " + guess) 
+					lower = (guess + 1);
+					guess = Math.round((upper + lower) / 2); 
+					var1 = prompt ("is the number " + guess);
 				}
 			}
 			if (var1 == "yes")
 			{
-				alert ("Ha! I got it!")
+				alert ("I won!");
 			}
 	</script> 
 </html> 
