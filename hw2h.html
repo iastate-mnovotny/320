@@ -1,0 +1,72 @@
+<script>
+	let key = parseInt(prompt("Enter the key to encrypt the message")); //gets a shift and makes it a number
+	alert(key)
+	let message = prompt("Enter the text you want encoded"); // gets the source text
+	let encryption = []; //a place for me to keep the encrypted text for later decyption
+	for (i=0; i < message.length; i++) {
+		let original = message.charCodeAt(i);
+		let sorcery = key ^ original;
+		encryption.push(/*String.fromCharCode*/(sorcery)); //I could make the encryption a string but it is not readable and therefore garbage. 
+	}; 
+	// it is best to leave the encyption as ascii code because this is more readble. 
+		/* alternatively, one could encrypt only letters as in the non-honors version, however this is impossible to reliably decrypt afterward.
+		The resulting codes could be anything and only if the computer saved exactly which characters were encoded and which were left untouched.
+		if(original > 64 && original < 91) {
+			let magic = original ^ key; 
+			encryption.push(String.fromCharCode(magic));
+		} else if(original > 96 && original < 123) {
+			let witchcraft = original ^ key;
+			encryption.push(String.fromCharCode(witchcraft));
+		} else {
+		encryption.push(message.charAt(i))
+		};
+	}; */
+	// alert(encryption.join("")); this will generally produce an unreadble string because there is no way to limit which result from XOR
+	alert(encryption); // This will give a series of ASCII codes separated by commas rather than unprintable garbage.
+	let decryption = []; // a place to keep the decrypted text for when this doesn't work and I need to see what happened
+	for (i=0; i < encryption.length; i++) {
+		let encoded = encryption[i];
+		let antimagic = key ^ encoded; // logically, repeating XOR with the encrypted data and same key should result in the original ascii code
+		decryption.push(String.fromCharCode(antimagic)); // This should be the source text 
+	};
+	alert(decryption.join("")); // this joins the characters into a nice readable text without the commas. 
+</script>
+
+<script> // this is the regular version. math is the worst thing ever. Also a shift by -26 results in a -0 modulo and I don't know how to fix that without breaking the shift by 1 and -1. 
+let key = parseInt(prompt("Enter the key by which to shift the letters."));
+let message = prompt("Enter the text you want encoded");
+let encryption = [];
+	for (i=0; i < message.length; i++) {
+		let original = message.charCodeAt(i);
+		if (original > 64 && original < 91) {
+			let zeroed = original - 65
+			let magic = zeroed + key ;
+			if (magic > 25) {
+				let wrapped = (magic%26) + 65; 
+				encryption.push(String.fromCharCode(wrapped));
+			} else if (magic < 0) {
+				let wrapped = (magic%26) + 91;
+				encryption.push(String.fromCharCode(wrapped));
+			} else {
+				let letter = magic + 65;
+				encryption.push(String.fromCharCode(letter));
+			}
+		} else if (original > 96 && original < 123) {
+			let zeroed = original - 97
+			let witchcraft = zeroed + key;
+			if (witchcraft > 25) {
+				let wrapped = (witchcraft%26) + 97;
+				encryption.push(String.fromCharCode(wrapped));
+			} else if (witchcraft < 0) {
+				let wrapped = (witchcraft%26) + 123
+				encryption.push(String.fromCharCode(wrapped));
+			} else { 
+				let letter = witchcraft + 97;
+				encryption.push(String.fromCharCode(letter))
+			} 
+		} else {
+			encryption.push(message.charAt(i));
+		}
+	};
+	alert(encryption.join(""));		
+</script>
