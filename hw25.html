@@ -1,0 +1,43 @@
+<p>Input:<br><textarea id="input" rows="10" cols="80"></textarea>
+<p><button onclick="process()">Process</button>
+<p>Output:<br><textarea id="output" rows="10" cols="80"></textarea>
+
+<script src="https://linguatorium.com/tools/static/320/english_words.js"></script>
+<script src="https://linguatorium.com/tools/static/320/editing_distance.js"></script>
+  
+<script>
+
+function process() {
+  x = document.getElementById("input").value
+  x = x.toLowerCase().replace(/\W+/g, " ").trim() // you don't need to understand this line
+  words = x.split(" ")
+  misspelled = ""
+  suggestion = ""
+  lowestNumber = 9999
+  for (i=0; i<words.length; i++) {
+    current_word = words[i]
+    word_misspelled = true
+    for (j=0; j < english_words.length; j++) {
+      if (english_words[j] === current_word) {
+        word_misspelled = false
+      }
+    }
+    if (word_misspelled) {
+	  for(k=0; k < english_words.length; k++) {
+	  possible = editing_distance(english_words[k], current_word)
+	    if (possible < lowestNumber) {
+	     lowestNumber = possible;
+		 suggestion = english_words[k];
+        }
+	  }
+	  misspelled += "You have misspelled the word "+current_word+"\nDid you mean " +suggestion+ "?\n"
+    }
+	lowestNumber = 9999
+  }
+  if (misspelled.length == 0) {
+    misspelled = "No words in your text have been misspelled"
+  }
+  document.getElementById("output").value = misspelled
+}
+
+</script>
