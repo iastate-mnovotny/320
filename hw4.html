@@ -1,0 +1,50 @@
+<script>
+	let questions = 
+	{
+	"in": ["in", "The dragon is ___ the cave.", "The sheep is ___ the dragon's mouth.", "There is magic ___ the air.", "I have not seen a dragon ___ years.", "Caves are holes ___ mountains."],
+	"on": ["on", "The dragon rider is ___ the dragon's back.", "Dragons live ___ mountain peaks.", "The house is ___ fire.", "The dragon sat ___ the house and crushed it.", "I saw a dragon ___ the way here."],
+	"for": ["for", "The sacrificial sheep is ___ the dragon.", "A magic sword was made especially ___ the knight.", "The villagers save grain ___ the king's tax.", "You must watch out ___ dragons in the mountains.", "The villagers only go there ___ food."],
+	"to": ["to", "Knights use swords ___ slay dragons.", "They traveled ___ the dragon's lair.", "The villagers give gifts ___ the dragon.", "They tell dragon stories ___ the children.", "I walked ___ another village from the mountain."],
+	"of": ["of", "The sky is full ___ dragons.", "I have met a lot ___ dragons.", "Dragons are the best ___ the mythical creatures.", "Many villagers are scared ___ dragons.", "There is a pile ___ treasure in the dragon's lair."]
+	}
+	
+	let counts =
+	{
+	"in":0,
+	"on":0,
+	"for":0,
+	"to":0,
+	"of":0
+	}
+	
+    let min = 9999
+	let next = "in"
+	let answer = ""
+	
+	while (answer != "quit") {
+		let random = parseInt(Math.random() * 5) + 1
+		Object.getOwnPropertyNames(counts).forEach(
+			function (val, idx, array) {
+				if (counts[val] < min) {
+					min = counts[val]
+					next = val
+				}
+			}
+		);
+		min = 9999
+		answer = prompt('Fill in the blank with in, on, for, to, or of.\n' + questions[next][random]).toLowerCase();
+		if (answer === questions[next][0]) {
+			counts[next] = counts[next] + 1
+			alert("Correct!")
+		} else if (answer === "quit") {
+			alert("Thanks for playing! See you soon!")
+		} else {
+			counts[next] = counts[next] - 1
+			correct = questions[next][random].replace("___", questions[next][0])
+			alert("Incorrect. This is the correct answer: " + correct)
+		}
+		
+	}
+
+</script>
+
