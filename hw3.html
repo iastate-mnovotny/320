@@ -11,7 +11,7 @@ function process() {
   output = []
   exceptions = ["use", "union", "universe", "university", "universities", "unit", "user", "uniform", "usage", "utility", "urine", "uranium", "unison", "euphoria", "utopia", "unanimity", "unanimous", "uterus", "unicorn", "euphemism", "eugenics", "usurp", "usurper", "usability", "uni", "eucalyptus", "one", "usury", "eulogy", "universal", "urinal", "universalism", "euro", "euope", "european", "utensil", "uniform", "ukulele", "usurer", "eukaryote", "useful", "ukrainian", "ukraine", "unite", "eureka", "onesie", "unix", "evgeny"]
   weirdos = ["honest", "hour"]
-  for (i=0; i < words.length; i++) {
+  for (i=0; i < words.length-1; i++) {
     if (words[i] == "a" || words[i] == "an") {
 	next = words[i+1][0]
 		if (exceptions.includes(words[i+1])) {
@@ -27,6 +27,7 @@ function process() {
 		output.push(words[i])
 	};
   }; 
+  output.push(words.pop());
   document.getElementById("output").value = output.join(" ");
 }
 
