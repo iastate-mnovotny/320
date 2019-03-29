@@ -1,0 +1,5 @@
+<script>
+	let original = prompt("Enter a sentence to be translated into Haigy Paigy.")
+	translation = original.replace(/([aeiouy]+)/gi, "aig$1").replace(/(aig[a-z]+)(aige\b)/gi, "$1e")
+	alert(translation)
+</script>
