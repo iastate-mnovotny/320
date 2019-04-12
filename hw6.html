@@ -1,0 +1,44 @@
+<script>
+continuingConversation = [
+" So, they are superior, correct?",
+" Which is why dragons are better, right?",
+" Doesn’t this prove that dragons are better?",
+" And, therefore, aren’t dragons clearly the best mythological creature?",
+" Dragons are the best, yeah?",
+" This shows that there are no better mythological creature than dragons, right?",
+" Dragons are the best, yes?",
+" Dragons are the coolest, right?",
+" The best creatures are dragons, correct?",
+" The best creature is the dragon, don’t you think?",
+" Don’t you think dragons are the coolest?",
+" No creature is better than a dragon, yeah?" 
+]
+
+response = prompt("What is your favorite mythological creature?")
+	if (/dragon/i.test(response)) {
+		response = prompt("Dragons are the best of course, don’t you agree?")
+		if(/yes/i.test(response)) {
+			alert("Good, we are on the same page")
+		} else {
+			response = prompt("Why do you say that?")
+		}
+	} else if (/(unicorn|phoenix|pegas|gryffin|merm)/i.test(response)) {
+		response = prompt("I think you are wrong. Dragons are clearly the best mythological creatures. Why do you like that one instead?")
+	} else {
+		response = prompt("I don’t know what that is. Can you explain?")
+	}
+while (response != "yes") {
+	tagQuestion = continuingConversation[parseInt(Math.random() * continuingConversation.length)]
+	if (/(fire|flame)/i.test(response)) {
+		response = prompt("Dragons can use ice as well as fire." + tagQuestion)
+	}else if(/(beaut|pretty|handsome|gorgeous|lovely)/i.test(response)){
+		response = prompt("Dragons come in many forms so you can always find a beautiful dragon. You can even find one in your favorite color!" + tagQuestion)
+	} else if (/(intelligent|smart|brilliant|clever)/i.test(response)) {
+		response = prompt("Dragons are always intelligent." + tagQuestion)
+	} else if(/(magic|power)/i.test(response)) {
+		response = prompt("Dragons are magical creatures with many diverse powers." + tagQuestion)
+	} else {
+		response = prompt("Dragons are cooler than anything." + tagQuestion)
+	}
+}
+</script>
