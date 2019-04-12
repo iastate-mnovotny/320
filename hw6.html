@@ -37,6 +37,8 @@ while (response != /yes/i.test(response)) {
 		response = prompt("Dragons are always intelligent." + tagQuestion)
 	} else if(/(magic|power)/i.test(response)) {
 		response = prompt("Dragons are magical creatures with many diverse powers." + tagQuestion)
+	} else if(/(strong|hardy|tough)/i.test(response)) {
+		reponse = prompt("Dragon scales are armor-like and very strong." + tagQuestion)
 	} else {
 		response = prompt("Dragons are cooler than anything." + tagQuestion)
 	}
