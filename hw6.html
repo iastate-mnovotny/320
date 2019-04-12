@@ -22,12 +22,12 @@ response = prompt("What is your favorite mythological creature?")
 		} else {
 			response = prompt("Why do you say that?")
 		}
-	} else if (/(unicorn|phoenix|pegas|gryffin|merm)/i.test(response)) {
+	} else if (/(unicorn|phoenix|pegas|gryffin|merm|dog)/i.test(response)) {
 		response = prompt("I think you are wrong. Dragons are clearly the best mythological creatures. Why do you like that one instead?")
 	} else {
 		response = prompt("I don’t know what that is. Can you explain?")
 	}
-while (response != "yes") {
+while (response != /yes/i.test(response)) {
 	tagQuestion = continuingConversation[parseInt(Math.random() * continuingConversation.length)]
 	if (/(fire|flame)/i.test(response)) {
 		response = prompt("Dragons can use ice as well as fire." + tagQuestion)
